@@ -2,11 +2,18 @@
 //
 
 #include <iostream>
+#include "BattleManager.h"
 #include "Characters.h"
+#include "Knight.h"
+#include "Mage.h"
 
 int main()
 {
     Mage Player = Mage();
+    Knight Enemy = Knight();
+    
+    BattleManager battle;
+    battle.startBattle(Player, Enemy);
 
 
 }

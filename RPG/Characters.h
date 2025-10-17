@@ -1,12 +1,15 @@
 #pragma once
 
 #include <iostream>
+#include <random>
+#include <chrono>
 
 using namespace std;
 
 class Character {
 public:
 	string name;
+	string element;
 	double health;
 	double strength;
 	double intelligence;
@@ -16,36 +19,33 @@ public:
 	double xp;
 
 	//constructor
-	Character() : health(0), strength(0), intelligence(0), willpower(0), armor(0), level(0), xp(0) {}
+	Character() : name(" "), element("water"), health(0), strength(0), intelligence(0), willpower(0), armor(0), level(0), xp(0) {}
 	virtual ~Character() = default;
 
+	virtual void attack(Character& target) = 0;
+	virtual void defend(Character& target) = 0;
+
+	string getRandomElement() {
+		static const vector<string> elements = {
+			"fire", "water", "earth", "wind", "ice", "lightning"
+		};
+
+		// Seed with current time
+		unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+		default_random_engine rng(seed);
+		uniform_int_distribution<int> dist(0, elements.size() - 1);
+
+		return elements[dist(rng)];
+	}
+
+	double getHealth() {
+		return health;
+	}
+
+	string getName() {
+		return name;
+	}
 
 };
 
-class Mage : public Character {
-public:
 
-	double mana;
-
-	Mage() : mana(100) {
-		name = "Unnamed Mage";
-		health = 100;
-		strength = 30;
-		intelligence = 80;
-		willpower = 70;
-		armor = 0;
-		level = 0;
-		xp = 0;
-	}
-
-	void fireball() {
-		if (mana >= 10) {
-			cout << name << " casts fireball" << endl;
-			mana -= 10;
-		}
-		else {
-			cout << "Not enough Mana" << endl;
-		}
-	}
-	
-};

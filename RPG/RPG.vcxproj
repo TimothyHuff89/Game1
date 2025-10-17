@@ -123,10 +123,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BattleManager.cpp" />
     <ClCompile Include="RPG.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleManager.h" />
     <ClInclude Include="Characters.h" />
+    <ClInclude Include="Knight.h" />
+    <ClInclude Include="Mage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
