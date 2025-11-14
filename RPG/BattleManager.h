@@ -7,5 +7,5 @@ using namespace std;
 
 class BattleManager {
 public:
-	void startBattle(Character& Player, Character& enemy);
+	 void startBattle(Character& Player, Character& enemy);
 };
